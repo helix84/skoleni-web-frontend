@@ -23,17 +23,25 @@ gulp.task('styles', [], function () {
 
 gulp.task('scripts', [], function () {
   // TODO: Glob all scripts.
+//  gulp.watch('scripts/**.js', 'scripts');
   // TODO: Init sourcemaps.
   // TODO: Add "uglify" action.
   // TODO: Add "concat" action.
   // TODO: Write sourcemaps.
   // TODO: Output everything to "dist/".
+  return gulp.src('scripts/**.js')
+    .pipe(sourcemaps.init())
+    .pipe(uglify())
+    .pipe(concat('scripts.js'))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('dist'))
+    .pipe(browserSync.stream());
 });
 
 // ------------------------------------------------------
 
-gulp.task('watch', ['styles', 'scripts'], function () {
-  gulp.watch('styles/**.scss', ['styles']);
+gulp.task('watch', ['styles', 'scripts', 'browsersync'], function () {
+  gulp.watch('styles/**.scss', ['styles', 'browsersync']);
   gulp.watch('scripts/**.js', ['scripts']);
 });
 
@@ -41,7 +49,8 @@ gulp.task('watch', ['styles', 'scripts'], function () {
 
 // source: https://www.browsersync.io/docs/gulp#gulp-sass-css
 gulp.task('browsersync', ['styles'], function () {
-  browserSync.init({ server: '.' });
+//  browserSync.init({ server: '.' });
+  browserSync.init({ proxy: 'http://dspace-cris.k.utb.cz' });
   gulp.watch('styles/**.scss', ['styles']);
   gulp.watch('*.html').on('change', browserSync.reload);
 });

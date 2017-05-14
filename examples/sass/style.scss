@@ -6,12 +6,36 @@ $theme-color: red;
 
 a {
     // TODO: Set color using a variable.
+color: $theme-color;
     // TODO: Use "animated" mixin.
+@include animated;
 }
 
 a:hover {
     // TODO: Set darker :hover color using a "mix()" function.
+color: mix($theme-color, green);
 }
+
+//li {
+//  font-weight:bold;
+//  color:$theme-color;
+//  li {
+//    font-weight:normal;
+//    color:black;
+//    display:inline;
+//  }
+//}
+
+body > ul {
+  > li {
+    font-weight:bold;
+    color:$theme-color;
+  }
+}
+
+//:not(li) > ul > li {
+//  display:inline;
+//}
 
 // TODO: Style nested lists:
 // 1st level - bold text, theme color

@@ -15,6 +15,14 @@
       background-color: red;
       color: white;
     }
+/*
+    .mod-notification .bad {
+      display:none;
+    }
+    .mod-no-notification .good {
+      display:none;
+    }
+*/
 
     /* TODO: Pick the right label to display. */
 
@@ -25,7 +33,7 @@
 
   <p>
     Your brower
-    <span class="good">supports</span>
+    <span class="good mod-notification">supports</span>
     <span class="bad">doesn't support</span>
     notification.
     </p>
@@ -34,7 +42,8 @@
   <script src="modernizr-custom.js"></script>
   <script>
     // TODO: Check if current browser supports notification API.
-    if (false) {
+//    if (false) {
+    if (Modernizr.notification) {
 
       // request permission and show notification
       Notification.requestPermission().then(function (result) {

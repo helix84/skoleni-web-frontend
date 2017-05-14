@@ -15,11 +15,14 @@
       text-decoration: none;
       background-color: rgb(10, 70, 159);
       color: white;
+transition: background-color 2s, transform .5s;
     }
 
     .button:hover {
       /* TODO: Change background-color using transition. */
+background-color: red;
       /* TODO: Scale the button up to 110%, rotate by 2 degrees. */
+transform: scale(1.1) rotate(2deg);
     }
 
     /* Text ------------------------------------ */
@@ -29,8 +32,7 @@
       padding-top: 1rem;
     }
     /* TODO: Hide a border everywhere but between two paragraphs. Do not touch the previous selector. */
-
-    .TODO-selector {
+    .content :not(p)+p {
       border-top: 0;
       padding-top: 0;
     }
